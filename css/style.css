@@ -1,0 +1,1074 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', Arial, sans-serif;
+	background: #1a0d00;
+	color: #ff9933;
+	overflow-x: scroll;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: url('comic.cur'), auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--highlight) var(--bg-alt);
+	position: relative;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		linear-gradient(rgba(255, 102, 0, 0.05) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 102, 0, 0.05) 1px, transparent 1px);
+	background-size: 50px 50px;
+	z-index: -999;
+	pointer-events: none;
+}
+
+body::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -998;
+	pointer-events: none;
+}
+
+a,
+button,
+select,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+label[for],
+.clickable {
+	cursor: url('comic.cur'), pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+textarea {
+	cursor: url('comic.cur'), text;
+}
+
+a:hover,
+button:hover,
+select:hover,
+input:hover,
+i:hover {
+	cursor: url('comic.cur'), pointer;
+}
+
+.navbar-right a,
+.navbar-right a img {
+	cursor: url('comic.cur'), pointer !important;
+}
+
+.game,
+.game-link,
+.game-thumbnail,
+.game-gallery {
+	cursor: url('comic.cur'), pointer !important;
+}
+
+.navbar-right a:hover,
+.navbar-right a:hover img,
+.game:hover,
+.game-link:hover,
+.game-thumbnail:hover {
+	cursor: url('comic.cur'), pointer !important;
+}
+
+select:active {
+	cursor: url('comic.cur'), pointer;
+}
+
+#loading-screen {
+	position: fixed;
+	inset: 0;
+	background: #1a0d0080;
+	backdrop-filter: blur(20px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	opacity: 1;
+	transition: opacity 1s ease-out;
+}
+
+.loader-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 200px;
+}
+
+#logo {
+	width: 100px;
+	height: 100px;
+}
+
+#loading-bar-container {
+	width: 100%;
+	height: 8px;
+	background: #4a2600;
+	border-radius: 4px;
+	overflow: hidden;
+	margin-top: 15px;
+}
+
+#loading-bar {
+	height: 100%;
+	width: 0;
+	background: #ff6600;
+	border-radius: 4px;
+	transition: width 1s ease;
+}
+
+.index-page .content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 70px - 20px - 10px);
+	text-align: center;
+	gap: 20px;
+}
+
+.index-page .button-container {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: url('comic.cur'), auto;
+}
+
+.index-page h1 {
+	font-size: 4rem;
+	color: #ff9933;
+	margin-bottom: 20px;
+}
+
+.index-page p {
+	font-size: 1.5rem;
+	color: #cc7722;
+}
+
+:root {
+	--glow-color: #873600;
+	--glow-amount: 5px;
+}
+
+.index-page .search-bar {
+	padding: 0px 20px;
+	width: 450px;
+	margin-top: 10px;
+	border-radius: 25px;
+	border: 2px solid transparent;
+	outline: none;
+	background-color: #2d1a00;
+	color: #ff9933;
+	text-align: center;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+	font-size: 1rem;
+	transition: all 0.4s ease;
+	animation: none;
+}
+
+.index-page .search-bar:focus {
+	width: 470px;
+	background-color: #2d1a00;
+	box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5), 0 0 var(--glow-amount) var(--glow-color);
+	border-color: var(--glow-color);
+	transform: scale(1.02);
+}
+
+.index-page .search-bar:focus:active {
+	animation: none;
+}
+
+.index-page .search-bar:focus:not(:placeholder-shown) {
+	animation: none;
+}
+
+.index-page .search-bar::placeholder {
+	color: #996633;
+	font-style: italic;
+	transition: color 0.3s ease;
+}
+
+.index-page .search-bar:hover::placeholder,
+.index-page .search-bar:focus::placeholder {
+	color: #ff9933;
+}
+
+.index-page button {
+	font-size: 1.2rem;
+	border-radius: 8px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	padding: 15px 25px;
+	width: 200px;
+	cursor: url('comic.cur'), auto;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #2d1800;
+	backdrop-filter: blur(20px);
+	padding: 1px 25px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+	box-shadow: 0px 2px 15px rgba(255, 102, 0, 0.3);
+	transition: background 0.3s ease-in-out;
+	border-radius: 8px;
+	height: 75px;
+	box-sizing: border-box;
+}
+
+.navbar.scrolled {
+	background: rgba(77, 35, 0, 0.6);
+	backdrop-filter: blur(20px);
+}
+
+.navbar-right {
+	position: fixed;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 1000;
+	padding: 15px 10px;
+	border-radius: 60px;
+	gap: 20px;
+}
+
+.navbar-right::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #2d18007d;
+	border-radius: 8px;
+	z-index: -1;
+}
+
+.navbar-right a {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: none;
+	color: #ff9933;
+	font-size: 1.2rem;
+	font-weight: 500;
+	transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+	padding: 12px;
+	border-radius: 8px;
+	width: 60px;
+	height: 60px;
+	box-sizing: border-box;
+}
+
+.navbar-right a:hover {
+	color: #ff6600;
+	transform: scale(1.15);
+	opacity: 0.8;
+	cursor: url('comic.cur'), auto;
+}
+
+.navbar-right img {
+	width: 32px;
+	height: 32px;
+	filter: invert(1);
+	transition: transform 0.3s ease, filter 0.3s ease;
+	cursor: pointer;
+}
+
+.navbar-right img:hover {
+	transform: scale(1.15);
+	cursor: url('comic.cur'), auto;
+	filter: invert(0.7);
+}
+
+.navbar-right .label {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(77, 35, 0, 1);
+	color: #ff9933;
+	padding: 8px 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+	white-space: nowrap;
+}
+
+.navbar-right a:hover .label {
+	opacity: 1;
+	cursor: url('comic.cur'), auto;
+}
+
+.content {
+	margin-top: 100px;
+	padding: 20px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 2.5rem;
+	color: #ff9933;
+	margin-bottom: 0px;
+}
+
+h1 {
+	font-size: 2.5rem;
+	color: #ff9933;
+	margin-bottom: 0px;
+}
+
+h4 {
+	font-size: 4.5rem;
+	color: #ff9933;
+	margin-bottom: 0px;
+}
+
+h5 {
+	font-size: 5.5rem;
+	color: #ff9933;
+	margin-bottom: 0px;
+}
+
+h6 {
+	font-size: 1.5rem;
+	color: #ff9933;
+	margin-bottom: 0px;
+}
+
+.search-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.search-bar {
+	padding: 12px 20px;
+	width: 100%;
+	max-width: 450px;
+	border-radius: 25px;
+	border: none;
+	outline: none;
+	background-color: #1a0d00;
+	color: #ff9933;
+	text-align: center;
+	font-size: 1rem;
+	font-family: 'Poppins', sans-serif;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+}
+
+.search-bar:focus,
+.search-bar:hover {
+	background-color: #2d1a00;
+	box-shadow: 0 6px 16px rgba(255, 102, 0, 0.45);
+	cursor: url('comic.cur'), auto;
+}
+
+.search-bar::placeholder {
+	color: #996633;
+	font-style: italic;
+}
+
+.autocomplete-list {
+	position: absolute;
+	background: #2d1a00;
+	border-radius: 10px;
+	width: 90%;
+	max-width: 500px;
+	margin: 5px auto 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+	overflow-y: auto;
+	max-height: 250px;
+	scrollbar-width: thin;
+	scrollbar-color: #663300 #1a0d00;
+}
+
+.autocomplete-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.autocomplete-list::-webkit-scrollbar-thumb {
+	background: #663300;
+	border-radius: 4px;
+}
+
+.autocomplete-item {
+	display: flex;
+	align-items: center;
+	padding: 8px 12px;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.autocomplete-item:hover {
+	background: #4a2600;
+}
+
+.autocomplete-item img {
+	width: 28px;
+	height: 28px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+p {
+	font-size: 1.2rem;
+	color: #cc7722;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+button {
+	background-color: #2d1800;
+	color: #ff9933;
+	border: 2px solid #663300;
+	padding: 10px 20px;
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 5px;
+	transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+	cursor: url('comic.cur'), auto;
+}
+
+button:hover {
+	background-color: #4a2600;
+	border-color: #ff6600;
+	color: #ff9933;
+	transform: scale(1.05);
+	cursor: url('comic.cur'), auto;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+header h1 {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+}
+
+header p {
+	font-size: 1.2rem;
+	color: #cc7722;
+	margin-bottom: 30px;
+}
+ .game-gallery {
+     padding: 0px;
+     margin: 0px auto;
+}
+ .game {
+     background-color: #00000000;
+     border: none;
+     text-align: center;
+     transition: all 0.3s ease;
+     position: relative;
+     display: inline-block;
+     margin: 10px;
+     vertical-align: top;
+}
+ .game:hover {
+     transform: scale(1.05);
+     border-color: #ff660000;
+     cursor: url('comic.cur'), auto;
+}
+ .game-link {
+     position: relative;
+     display: block;
+     width: 100%;
+     overflow: hidden;
+     border-radius: 10px;
+     box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+}
+ .game-thumbnail {
+     border-radius: 10px;
+     width: 200px;
+     height: 200px;
+     transition: transform 0.5s ease;
+     border: none;
+}
+ .game:hover {
+     transform: scale(1.05);
+     cursor: url('comic.cur'), auto;
+     border-color: #ff6600;
+     border-radius: 3px;
+}
+ .game-link::after {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: rgba(26, 13, 0, 0.8);
+     opacity: 0;
+     transition: opacity 0.3s ease;
+}
+ .game:hover .game-link::after {
+     opacity: 2;
+     cursor: url('comic.cur'), auto;
+}
+ .game-link::before {
+     content: attr(data-name);
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     color: #ff9933;
+     font-size: 1.3rem;
+     font-weight: bold;
+     text-align: center;
+     width: 100%;
+     padding: 0 0px;
+     box-sizing: border-box;
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     z-index: 2;    
+}
+ .game:hover .game-link::before {
+     opacity: 1;
+     cursor: url('comic.cur'), auto;
+}
+ .game h3, .app h3 {
+     color: #ff9933;
+     margin-top: 15px;
+     font-weight: 600;
+}
+ .game h3 {
+     font-size: 1.3rem;
+}
+.game.hidden {
+    display: none;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: auto;
+	min-height: 100vh;
+}
+
+.content {
+	margin-top: 100px;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	min-height: auto;
+	height: auto;
+}
+
+.container {
+	max-width: none;
+	width: 100%;
+}
+
+@media (max-width: 1200px) {
+	.game-gallery {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.game-gallery {
+		grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+		gap: 20px;
+		padding: 15px;
+	}
+
+	.game-link::before {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.game-gallery {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 16px;
+		padding: 10px;
+	}
+}
+
+button {
+	font-size: 14px;
+	padding: 8px 15px;
+	cursor: url('comic.cur'), auto;
+}
+
+.buttons-here {
+	text-align: center;
+	border: 40px #ff9933;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	position: relative;
+	gap: 10px;
+	z-index: 9998;
+	cursor: url('comic.cur'), auto;
+}
+
+.iframe-container {
+	position: relative;
+	width: 80vw;
+	height: 82vh;
+	margin: -70px 55px 25px 70px;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+}
+
+.gameframe {
+	width: 100%;
+	height: calc(100% - 60px);
+	display: block;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	z-index: 1;
+	border: none;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.bottom-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background-color: #2d1800;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 15px;
+	z-index: 99;
+	box-shadow: 0 -2px 10px rgba(255, 102, 0, 0.2);
+}
+
+.power-indicator {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #ff9933;
+	font-size: 14px;
+}
+
+.iframeiconshere {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+#iframeicons,
+#fullscreen,
+#copylink,
+#discordchat,
+#downloadgame,
+#aboutblank {
+	font-size: 18px;
+	color: #ff9933;
+	cursor: pointer;
+	transition: all ease-in-out 0.2s;
+	background-color: #4a2600;
+	padding: 10px;
+	border-radius: 6px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 38px;
+	min-height: 38px;
+}
+
+#iframeicons:hover,
+#fullscreen:hover,
+#copylink:hover,
+#aboutblank:hover,
+#downloadgame:hover,
+#discordchat:hover {
+	background-color: #1a0d00;
+	cursor: url('comic.cur'), auto;
+}
+
+#copylink:hover {
+	color: #ff9933;
+}
+
+#copylink.copied {
+	color: #ff9933 !important;
+	background-color: rgba(255, 102, 0, 0.3) !important;
+}
+
+#discordchat.active {
+	background-color: #ff6600 !important;
+	color: #1a0d00 !important;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+}
+
+.settings-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 20px;
+	max-width: 1200px;
+	margin: 100px auto 0;
+}
+
+input[type="text"],
+input[type="file"] {
+	width: 100%;
+	padding: 10px 15px;
+	margin: 10px 0;
+	border: 2px solid #663300;
+	border-radius: 8px;
+	background-color: #1a0d00;
+	color: #ff9933;
+	font-size: 1rem;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+	border-color: #ff6600;
+	box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+}
+
+input[type="file"]::-webkit-file-upload-button {
+	background-color: #2d1800;
+	color: #ff9933;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	cursor: url('comic.cur'), auto;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+	background-color: #4a2600;
+	cursor: url('comic.cur'), auto;
+}
+
+label {
+	display: block;
+	margin-top: 15px;
+	font-size: 1rem;
+	color: #ff9933;
+	text-align: left;
+}
+
+.settings-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+	padding: 40px 20px;
+	max-width: 1200px;
+	margin: 100px auto 0;
+}
+
+.settings-section {
+	background-color: var(--bg);
+	border: 2px solid var(--border);
+	border-radius: var(--radius);
+	padding: 30px 40px;
+	box-shadow: 0 6px 15px rgba(255, 102, 0, 0.3);
+	text-align: left;
+	max-width: 400px;
+	width: 100%;
+	transition: transform 0.2s ease;
+}
+
+.settings-section h2 {
+	color: var(--text);
+	margin-bottom: 10px;
+	font-size: 1.5rem;
+}
+
+.settings-section p {
+	color: var(--text-muted);
+	margin-bottom: 20px;
+	font-size: 0.95rem;
+}
+
+.settings-section button {
+	background-color: var(--accent);
+	color: #ff9933;
+	border: 2px solid #663300;
+	padding: 12px 24px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.settings-section select {
+	width: 100%;
+	padding: 10px 14px;
+	margin-top: 10px;
+	border-radius: var(--radius);
+	background-color: var(--highlight);
+	color: #ff9933;
+	border: 1px solid #663300;
+	font-size: 14px;
+}
+
+.settings-section label {
+	font-weight: 600;
+	border: #ff9933;
+	margin-top: 16px;
+	display: block;
+	font-size: 0.95rem;
+}
+
+#panicKeySettings,
+#tabCustomization {
+	background-color: var(--bg);
+	border: 2px solid var(--border);
+	border-radius: var(--radius);
+	padding: 30px 40px;
+	box-shadow: 0 6px 15px rgba(255, 102, 0, 0.3);
+	text-align: left;
+	max-width: 400px;
+	width: 100%;
+	margin-top: 60px;
+}
+
+#panicKeySettings h2 {
+	font-size: 1.4rem;
+	margin-bottom: 15px;
+	color: var(--text);
+}
+
+#currentPanicKey {
+	font-size: 1rem;
+	color: #cc7722;
+	margin-bottom: 20px;
+}
+
+#debugStats {
+	background-color: var(--bg-alt);
+	padding: 20px;
+	border-radius: var(--radius);
+	border: 2px solid var(--border);
+	margin-top: 30px;
+	color: #ff9933;
+	font-size: 1rem;
+}
+
+#debugStats p {
+	margin-bottom: 10px;
+	font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+	.settings-container {
+		flex-direction: column;
+		align-items: center;
+		padding: 20px 10px;
+	}
+
+	.settings-section,
+	#panicKeySettings,
+	#tabCustomization {
+		padding: 20px;
+		margin-top: 40px;
+	}
+
+	#panicKeySettings h2 {
+		font-size: 1.2rem;
+	}
+
+	#currentPanicKey {
+		font-size: 0.9rem;
+	}
+}
+
+#credits {
+	margin-top: 20px;
+	text-align: center;
+	padding: 10px;
+	background-color: #1a0d00;
+	border-radius: 5px;
+}
+
+#credits a {
+	color: #ff9933;
+	text-decoration: none;
+}
+
+#credits a:hover {
+	text-decoration: underline;
+	cursor: url('comic.cur'), auto;
+}
+
+@media (max-width: 768px) {
+	.settings-container {
+		flex-direction: column;
+	}
+
+	.settings-section {
+		max-width: 100%;
+	}
+}
+
+#announcement {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	background-color: #663300;
+	color: #ff9933;
+	padding: 15px;
+	border-radius: 5px;
+	box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+	z-index: 10000;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	max-width: 300px;
+	word-wrap: break-word;
+	animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+#uv-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 800px;
+}
+
+#uv-address {
+	padding: 20px 30px;
+	width: 100%;
+	border-radius: 20px;
+	border: 2px solid transparent;
+	outline: none;
+	background-color: #2d1800;
+	color: #ff9933;
+	font-size: 1.3rem;
+	font-family: 'Poppins', sans-serif;
+	box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+	transition: all 0.3s ease;
+	text-align: center;
+}
+
+#uv-address::placeholder {
+	color: #996633;
+	font-style: italic;
+}
+
+#uv-address:hover,
+#uv-address:focus {
+	background-color: #4a2600;
+	box-shadow: 0 6px 16px rgba(255, 102, 0, 0.45), 0 0 10px var(--glow-color);
+	border-color: var(--glow-color);
+	transform: scale(1.02);
+	cursor: url('comic.cur'), text;
+}
+
+#uv-error {
+	color: #ff3300;
+	font-weight: bold;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#uv-error-code {
+	color: #ff9966;
+	background-color: #00000000;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	overflow-x: auto;
+	margin-top: 5px;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: #663300 #1f1f1f00;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 0px;
+}
+
+::-webkit-scrollbar-track {
+	background: #1f1f1f00;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #663300;
+	border-radius: 10px;
+	border: 3px solid #1a0d00;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #804000;
+}
+
+::selection {
+	background-color: #804000;
+	color: white;
+}
