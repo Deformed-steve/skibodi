@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/png" href="png/logo.png" id="favicon" />
+      <title>Truffled - Settings</title>
+      <meta name="title" content="Truffled - Settings">
+      <meta name="description" content="Change how you feel on Truffled...">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://truffled.lol/s">
+      <meta property="og:title" content="Truffled - Settings">
+      <meta property="og:description" content="Change how you feel on Truffled...">
+      <meta property="og:image" content="https://truffled.lol/png/logo.png">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:url" content="https://truffled.lol/s">
+      <meta name="twitter:title" content="Truffled - Settings">
+      <meta name="twitter:description" content="Change how you feel on Truffled...">
+      <meta name="twitter:image" content="https://truffled.lol/png/logo.png">
+      <link rel="canonical" href="https://truffled.lol/s">
+      <link rel="stylesheet" href="css/style.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+   </head>
+   <body>
+      <div class="navbar-right">
+         <a href="/">
+         <img src="png/house-solid.svg" alt="Home">
+         </a>
+         <a href="g">
+         <img src="png/gamepad-solid.svg" alt="Games">
+         </a>
+         <a href="t">
+         <img src="png/tool.svg" alt="Tools">
+         </a>
+         <a href="https://discord.gg/vVqY36mzvj">
+         <img src="png/other.svg" alt="Discord">
+         </a>
+         <a href="s">
+         <img src="png/gear-solid.svg" alt="Settings">
+         </a>
+      </div>
+      <div class="settings-container">
+         <section id="panickeysettings" class="settings-section">
+            <h2>Panic key settings</h2>
+            <p id="currentPanicKey">current panic key: </p>
+            <p id="instruction">press the button below to change your panic key.</p>
+            <button onclick="changePanicKey()">change panic key</button>
+         </section>
+         <section id="abblank" class="settings-section">
+            <h2>About:Blank</h2>
+            <button id="openblankbtn">for about:blank click here</button>
+         </section>
+         <script>
+            function openIframe() {
+              const newWindow = window.open('about:blank');
+            
+              if (!newWindow) {
+                alert('popup blockeddddddddddddddd');
+                return;
+              }
+            
+            
+              newWindow.document.body.innerHTML = '';
+              newWindow.document.documentElement.style.margin = '0';
+              newWindow.document.documentElement.style.padding = '0';
+              newWindow.document.documentElement.style.height = '100%';
+              newWindow.document.body.style.margin = '0';
+              newWindow.document.body.style.padding = '0';
+              newWindow.document.body.style.height = '100%';
+              newWindow.document.body.style.overflow = 'hidden';
+              const iframe = newWindow.document.createElement('iframe');
+              iframe.src = window.location.href; 
+              iframe.style.width = '100vw';
+              iframe.style.height = '100vh';
+              iframe.style.border = 'none';
+              iframe.style.display = 'block';
+            
+              newWindow.document.body.appendChild(iframe);
+            }
+            
+            document.getElementById('openblankbtn').addEventListener('click', openIframe);
+         </script>
+         <section id="resetsettings" class="settings-section">
+            <h2>Reset settings</h2>
+            <button id="resetbtn">reset settings</button>
+         </section>
+         <section id="savedata" class="settings-section">
+            <h2>Save / export & import data</h2>
+            <p>download a copy of all your data or restore it from a backup.</p>
+            <button id="exportDataBtn">export My Data</button><button id="importDataBtn">import My Data</button>
+            <br />
+            <input type="file" id="importDataInput" accept=".json">
+         </section>
+      </div>
+      <script>
+         const loadingtoggle = document.getElementById("loadingtoggle");
+         loadingtoggle.checked = localStorage.getItem("loadingEnabled") !== "false";
+         loadingtoggle.addEventListener("change", () => {
+           localStorage.setItem("loadingEnabled", loadingtoggle.checked);
+           alert("Loading setting saved");
+         });
+         
+         document.getElementById("resetbtn").addEventListener("click", () => {
+           if (confirm("Sure you wanna reset all settings?")) {
+             localStorage.clear();
+             alert("Settings reset");
+             location.reload();
+           }
+         });
+         
+         document.getElementById("openblankbtn").addEventListener("click", () => {
+           window.location.href = "about:blank";
+         });
+      </script>
+      <script>
+         document.getElementById("exportDataBtn").addEventListener("click", () => {
+            const data = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                  const key = localStorage.key(i);
+                  try {
+                     data[key] = JSON.parse(localStorage.getItem(key));
+                  } catch {
+                     data[key] = localStorage.getItem(key);
+                  }
+            }
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "truffled_data.json";
+            a.click();
+            URL.revokeObjectURL(url);
+            alert("data exported successfully!");
+         });
+         const importInput = document.getElementById("importDataInput");
+         document.getElementById("importDataBtn").addEventListener("click", () => {
+            const file = importInput.files[0];
+            if (!file) return alert("please select a JSON file to import.");
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                  try {
+                     const importedData = JSON.parse(e.target.result);
+                     for (const key in importedData) {
+                        localStorage.setItem(key, JSON.stringify(importedData[key]));
+                     }
+                     alert("data imported successfully!");
+                     location.reload();
+                  } catch (err) {
+                     alert("invalid json file.");
+                     console.error(err);
+                  }
+            };
+            reader.readAsText(file);
+         });
+      </script>
+      <script src="/js/right.js"></script>
+      <script src="/js/panic.js"></script>
+            <script>
+         let userInteracted = false;
+         document.addEventListener('click', () => userInteracted = true);
+         document.addEventListener('keydown', () => userInteracted = true);
+         document.addEventListener('mousemove', () => userInteracted = true);
+
+         window.addEventListener('beforeunload', function (e) {
+         if (!userInteracted) return; 
+         e.preventDefault();
+         e.returnValue = ""; 
+         });
+      </script>
+   </body>
+</html>
