@@ -1,0 +1,2 @@
+if (!self.__uv && self.importScripts) importScripts('/active/uv/uv.bundle.js', '/active/uv/uv.config.js', '/active/uv/uv.handler.js');
+function post(t){if(t.source===__uv.$get(parent)&&t.origin===__uv.$get(location).protocol+"//"+__uv.$get(location).hostname&&"string"==typeof t.data){var o=t.data.indexOf(":"),a=t.data.substr(0,o),n=t.data.substr(o+1);"ddg"===a&&(__uv.$get(parent).window.__uv$setSource(__uv).__uv$location.href=n)}}window.addEventListener&&window.addEventListener("message",post,!1);
