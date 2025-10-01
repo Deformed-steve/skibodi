@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="png/logo.png" />
+    <title>Truffled</title>
+    <meta charset="UTF-8">
+    <meta name="title" content="Truffled">
+    <meta name="description" content="The BEST unblocked gaming site you'll ever need...">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://truffled.lol/">
+    <meta property="og:title" content="Truffled">
+    <meta property="og:description" content="The BEST unblocked gaming site you'll ever need...">
+    <meta property="og:image" content="https://truffled.lol/png/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://truffled.lol/">
+    <meta name="twitter:title" content="Truffled">
+    <meta name="twitter:description" content="The BEST unblocked gaming site you'll ever need...">
+    <meta name="twitter:image" content="https://truffled.lol/png/logo.png">
+    <link rel="canonical" href="https://truffled.lol/">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css" />
+   </head>
+   <script>
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "`") {
+          window.location.href = "/extra/szvy.png";
+        }
+      });
+   </script>
+   <body class="index-page">
+      <div class="custom-cursor"></div>
+      <div id="particles-js"></div>
+      <div class="navbar-right">
+         <a href="/">
+         <img src="png/house-solid.svg" alt="Home">
+         </a>
+         <a href="g">
+         <img src="png/gamepad-solid.svg" alt="Games">
+         </a>
+         <a href="t">
+         <img src="png/tool.svg" alt="Tools">
+         </a>
+         <a href="https://discord.gg/vVqY36mzvj">
+         <img src="png/other.svg" alt="Discord">
+         </a>
+         <a href="s">
+         <img src="png/gear-solid.svg" alt="Settings">
+         </a>
+      </div>
+      <div class="content">
+         <h1 class="title">Welcome to Truffled</h1>
+         <form id="uv-form" style="display: flex; flex-direction: column; gap: 10px;">
+            <input id="uv-search-engine" value="https://duckduckgo.com/?t=h_&q=%s" type="hidden" />
+            <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input" />
+            <div id="random-text" style="font-size: 0.9em; color: gray;"></div>
+         </form>
+         <div class="desc left-margin">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+         </div>
+         <script>
+            const texts = [
+              "Games with your Desire!", "auk.cc on tiktok", "the nether...", "Gatekeep this at all cost",
+              "im a bun im a bun", "Join the discord for more links", "mttg in the works", "linux > macos",
+              "king lebron...", "I need money, cashapp: $pumpedkidd", "Chickenbutt", "mario pleaseeeeeee",
+              "reeeeee boiiiiiiii lol moment", "mexi has a good site", "tyler is the best artist",
+              "i all i want to do is mehhhhhhhhhh", "sealie wants my milkshakes -frogie1", "i am BIGCHUNGUS BOIIII",
+              "i have 32.14$ on adsterra 5/8/25", "highschool scares me", "nah nah nah call me daddy",
+              "gurt: sybau", "teto, miku, neru", "gamprodev🥷", "hawk1: you wanna say something?",
+              "hawk2: uhhhhhhhhhh", "my school hates me", "dab on the haters", "the f students, there my inventors",
+              "nickolas", "greyson mess fanclub", "There's a sun around the bend.", "iis2 > nightly manor",
+              "20200229 2", "who tryna go to 165 S Main St #100b, Harrisonburg, VA 22801",
+              "shout out to corbin. rip him cuz dmca", "shape world", "frogies sybersecurity class",
+              "eagler craft server soon", "complex.lat", "grigger from limbus company", "BABY SHLAWNG",
+              "npm run fart", "41 minutes", "67 mango st", "windhawk is fireeeee", "porting games is my passion",
+              "the gazebo family", "nick playing in recess", "play bogs niche items on rbx",
+              "can you translate that for me mexi?", "scooby doo pa pa", "bro can we just exile this:",
+              "profile system was a hell to make.", "w faps?", "l faps?", "trash faps?", "illegal faps?",
+              "amazing faps?", "steamrip my goat <333", "when theres rain, theres thunder...",
+              "los pollos is ass at fort 🤣", "bocchi the rock firee", "cs2 bhop back baby <33",
+              "effoc", "barber shop", "steven here", "MEOWL", "truman show", "MEOWL", "MEOWL", "MEOWL", "MEOWL",
+              "toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma toma ",
+              "you need to NERD OUT", "labubu?", "yall have a good night", "zack is a piggy", "OINK OINK OINK OINK OINK OINK", "i <3 durpii", "AYE WASSUP COOKIE. calm down g",
+              "gucci bucket gucci bucket", "What??? is this even possible???????????", "eunoia is a CLANKER",
+              "ref do something","peterbot word", "grow a garden phonk anyone?",
+              "i wrap it like a jolly rancher","https://discord.gg/CDd8BFcyWW","people will call me a skid, js say my site is bad.", "i love mac demarco"
+            ];
+            
+            const selected = texts[Math.floor(Math.random() * texts.length)];
+            const container = document.getElementById("random-text");
+            
+            container.innerHTML = "";
+            const textNode = document.createElement("span");
+            textNode.textContent = selected;
+            container.appendChild(textNode);
+            
+            if (selected === "mario pleaseeeeeee") {
+              const img = document.createElement("img");
+              img.src = "/extra/mario.png";
+              img.alt = "pleaseeeeeee";
+              img.style.display = "block";
+              img.style.marginTop = "10px";
+              img.style.height = "200px";
+              img.onerror = () => {
+                alert("Image not found at /extra/mario.png — check your file path.");
+              };
+              container.appendChild(img);
+            }
+         </script>
+      </div>
+      <script src="/active/uv/uv.bundle.js" charset="UTF-8" defer></script>
+      <script src="/active/uv/uv.config.js" charset="UTF-8" defer></script>
+      <script src="/active/register-sw.js" charset="UTF-8" defer></script>
+      <script src="/active/search.js" charset="UTF-8" defer></script>
+      <script src="/active/index.js" charset="UTF-8" defer></script>
+      <script src="/js/panic.js"></script>
+      <script src="/js/right.js"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-WLTG1S4STB');
+      </script>
+            <script>
+         let userInteracted = false;
+         document.addEventListener('click', () => userInteracted = true);
+         document.addEventListener('keydown', () => userInteracted = true);
+         document.addEventListener('mousemove', () => userInteracted = true);
+
+         window.addEventListener('beforeunload', function (e) {
+         if (!userInteracted) return; 
+         e.preventDefault();
+         e.returnValue = ""; 
+         });
+      </script>
+   </body>
+</html>
