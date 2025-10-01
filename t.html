@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/png" href="png/logo.png" />
+      <title>Truffled - Tools</title>
+      <meta name="title" content="Truffled - Tools">
+      <meta name="description" content="These can help you do some cool shit on Truffled!">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://truffled.lol/t">
+      <meta property="og:title" content="Truffled - Tools">
+      <meta property="og:description" content="These can help you do some cool shit on Truffled!">
+      <meta property="og:image" content="https://truffled.lol/png/logo.png">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:url" content="https://truffled.lol/t">
+      <meta name="twitter:title" content="Truffled - Tools">
+      <meta name="twitter:description" content="These can help you do some cool shit on Truffled!">
+      <meta name="twitter:image" content="https://truffled.lol/png/logo.png">
+      <link rel="canonical" href="https://truffled.lol/t">
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/tools.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+   </head>
+   <div id="particles-js"></div>
+   <body class="index-page">
+      <div class="navbar-right">
+         <a href="/">
+         <img src="png/house-solid.svg" alt="Home">
+         </a>
+         <a href="g">
+         <img src="png/gamepad-solid.svg" alt="Games">
+         </a>
+         <a href="t">
+         <img src="png/tool.svg" alt="Tools">
+         </a>
+         <a href="https://discord.gg/vVqY36mzvj">
+         <img src="png/other.svg" alt="Discord">
+         </a>
+         <a href="s">
+         <img src="png/gear-solid.svg" alt="Settings">
+         </a>
+      </div>
+      <div class="content">
+         <h1>Tools</h1>
+         <div class="container">
+            <div class="game-gallery" id="gameGallery">
+               <div class="game" data-name="exthang3r">
+                  <a href="/iframe.html?url=/tools/ext.html" class="game-link" data-name="exthang3r">
+                  <img src="/png/tools/exthang3r.png" alt="exthang3r" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="auk">
+                  <a href="/iframe.html?url=/tools/auk/index.html" class="game-link" data-name="auk">
+                  <img src="tools/auk/auk.png" alt="auk" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="extprinter">
+                  <a href="/iframe.html?url=/tools/extp.html" class="game-link" data-name="extprinter">
+                  <img src="png/tools/test.png" alt="extprinter" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="sh1mmer">
+                  <a href="/iframe.html?url=/tools/sh1mmer/index.html" class="game-link" data-name="sh1mmer">
+                  <img src="tools/sh1mmer/assets/icon.png" alt="sh1mmer" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="gdg">
+                  <a href="/iframe.html?url=/tools/gdg/index.html" class="game-link" data-name="gdg">
+                  <img src="/tools/gdg/gdg.png" alt="gdg" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="Ruffle">
+                  <a href="/iframe.html?url=/tools/ruffle.html" class="game-link" data-name="Ruffle">
+                  <img src="png/tools/ruf.png" alt="Ruffle" class="game-thumbnail" />
+                  </a>
+               </div>
+               <div class="game" data-name="voxiles">
+                  <a href="/iframe.html?url=/tools/vox.html" class="game-link" data-name="voxiles">
+                  <img src="png/tools/VOX.png" alt="voxiles" class="game-thumbnail" />
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="/js/right.js"></script>
+      <script>
+         document.addEventListener("keydown", function (event) {
+           if (event.key === "3") {
+             window.location.href = "/extra/3man.png";
+           }
+         });
+      </script>
+            <script>
+         let userInteracted = false;
+         document.addEventListener('click', () => userInteracted = true);
+         document.addEventListener('keydown', () => userInteracted = true);
+         document.addEventListener('mousemove', () => userInteracted = true);
+
+         window.addEventListener('beforeunload', function (e) {
+         if (!userInteracted) return; 
+         e.preventDefault();
+         e.returnValue = ""; 
+         });
+      </script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+           dataLayer.push(arguments);
+         }
+         gtag("js", new Date());
+         gtag("config", "G-WLTG1S4STB");
+      </script>
+   </body>
+</html>
